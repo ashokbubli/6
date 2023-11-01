@@ -1,0 +1,7 @@
+application: my-app
+accessibility: internet
+it-lead: test@user
+expert:
+  - test1
+  - test2
+business-service: mygroup
