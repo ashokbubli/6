@@ -7,4 +7,4 @@ contacts:
   hosted-env: cloud
   accessibility: internet
 servicenow:
-  business-service: gh support
+  business-service-name: gh support
