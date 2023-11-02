@@ -1,10 +1,10 @@
-application: my app
+application: 
 contacts:
   it-owner: owner
   key-expert:
     - user1
     - user2
   hosted-env: cloud
-  accessibility: internet
+  accessibility: 
 servicenow:
   business-service-name: gh support
