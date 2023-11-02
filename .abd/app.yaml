@@ -1,7 +1,10 @@
-application: my-app
-accessibility: internet
-it-lead: test@user
-expert:
-  - test1
-  - test2
-business-service: mygroup
+application: my app
+contacts:
+  it-owner: owner
+  key-expert:
+    - user1
+    - user2
+  hosted-env: cloud
+  accessibility: internet
+servicenow:
+  business-service: gh support
