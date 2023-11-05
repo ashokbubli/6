@@ -133,6 +133,15 @@
         "Hosted Environment": "cloud",
         "Accessibility": "intranet",
         "Business Service Name": "gh support"
+     },
+     {
+        "Repository": "jacococ",
+        "Application": null,
+        "IT Owner": "owner",
+        "Key Expert": "user1, user2",
+        "Hosted Environment": "cloud",
+        "Accessibility": "intranet",
+        "Business Service Name": "gh support"
      }
 
 ]
