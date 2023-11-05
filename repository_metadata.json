@@ -72,15 +72,6 @@
         "Business Service Name": "gh support"
     },
     {
-        "Repository": "8",
-        "Application": null,
-        "IT Owner": "owner",
-        "Key Expert": "user1, user2",
-        "Hosted Environment": "cloud",
-        "Accessibility": null,
-        "Business Service Name": "gh support"
-    },
-    {
         "Repository": "9",
         "Application": "my app",
         "IT Owner": "owner",
