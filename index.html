@@ -19,43 +19,48 @@
             width: 100%;
             padding: 5px;
         }
-
-        /* Adjust the table headers alignment */
-        th {
-            text-align: center;
-        }
     </style>
     <title>Repository Metadata</title>
 </head>
 <body>
-    <table>
-        <thead>
-            <tr>
-                <th>Repository</th>
-                <th>Application</th>
-                <th>IT Owner</th>
-                <th>Key Expert</th>
-                <th>Hosted Environment</th>
-                <th>Accessibility</th>
-                <th>Business Service Name</th>
-            </tr>
-            <tr>
-                <!-- Add the search input aligned with the columns -->
-                <td><input type="text" id="filter" class="filter-input" placeholder="Search data"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </thead>
-        <tbody id="data-output">
-            <!-- Repository metadata from JavaScript will be inserted here. -->
-        </tbody>
-    </table>
+    <div class="container">
+        <!-- Heading container -->
+        <div class="heading-container">
+            <h1>A Bootstrap 5 Starter Template</h1>
+            <p class="lead">A complete project boilerplate built with Bootstrap</p>
+            <p>Bootstrap v5.2.3</p>
+        </div>
 
-    <!-- Your data table will be displayed here -->
+        <!-- Filter container at the top of the "Repository" column -->
+        <div class="filter-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Repository</th>
+                        <th>Application</th>
+                        <th>IT Owner</th>
+                        <th>Key Expert</th>
+                        <th>Hosted Environment</th>
+                        <th>Accessibility</th>
+                        <th>Business Service Name</th>
+                    </tr>
+                    <tr>
+                        <!-- Add the search input aligned with the "Repository" column -->
+                        <td><input type="text" id="filter" class="filter-input" placeholder="Search data"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody id="data-output">
+                    <!-- Repository metadata from JavaScript will be inserted here. -->
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <script src="script.js"></script> <!-- Link to the JavaScript file -->
 </body>
