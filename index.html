@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Add CSS for the filter input and heading */
+        .container {
+            position: relative;
+        }
+
         .filter-container {
             position: absolute;
             top: 0;
@@ -31,36 +35,34 @@
     <title>Repository Metadata</title>
 </head>
 <body>
-    <!-- Filter container on the right side at the top of the table -->
+    <!-- Container for the filter input and table -->
     <div class="container">
         <div class="filter-container">
             <input type="text" id="filter" class="filter-input" placeholder="Search data">
         </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Repository</th>
+                    <th>Application</th>
+                    <th>IT Owner</th>
+                    <th>Key Expert</th>
+                    <th>Hosted Environment</th>
+                    <th>Accessibility</th>
+                    <th>Business Service Name</th>
+                </tr>
+            </thead>
+            <tbody id="data-output">
+                <!-- Repository metadata from JavaScript will be inserted here. -->
+            </tbody>
+        </table>
     </div>
 
-    <!-- Heading container in the center of the page -->
     <div class="heading-container">
         <h1>A Bootstrap 5 Starter Template</h1>
         <p class="lead">A complete project boilerplate built with Bootstrap</p>
         <p>Bootstrap v5.2.3</p>
     </div>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Repository</th>
-                <th>Application</th>
-                <th>IT Owner</th>
-                <th>Key Expert</th>
-                <th>Hosted Environment</th>
-                <th>Accessibility</th>
-                <th>Business Service Name</th>
-            </tr>
-        </thead>
-        <tbody id="data-output">
-            <!-- Repository metadata from JavaScript will be inserted here. -->
-        </tbody>
-    </table>
 
     <script src="script.js"></script> <!-- Link to the JavaScript file -->
 </body>
