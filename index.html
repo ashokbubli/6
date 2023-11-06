@@ -10,12 +10,9 @@
     <!-- Link to your stylesheet -->
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Add CSS for the filter input and heading */
+        /* Add CSS for the filter input */
         .filter-container {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 10px;
+            position: relative;
         }
 
         .filter-input {
@@ -23,28 +20,14 @@
             padding: 5px;
         }
 
-        .heading-container {
+        /* Adjust the table headers alignment */
+        th {
             text-align: center;
-            padding: 20px;
         }
     </style>
     <title>Repository Metadata</title>
 </head>
 <body>
-    <!-- Filter container on the right side at the top of the table -->
-    <div class="container">
-        <div class="filter-container">
-            <input type="text" id="filter" class="filter-input" placeholder="Search data">
-        </div>
-    </div>
-
-    <!-- Heading container in the center of the page -->
-    <div class="heading-container">
-        <h1>A Bootstrap 5 Starter Template</h1>
-        <p class="lead">A complete project boilerplate built with Bootstrap</p>
-        <p>Bootstrap v5.2.3</p>
-    </div>
-
     <table>
         <thead>
             <tr>
@@ -56,11 +39,23 @@
                 <th>Accessibility</th>
                 <th>Business Service Name</th>
             </tr>
+            <tr>
+                <!-- Add the search input aligned with the columns -->
+                <td><input type="text" id="filter" class="filter-input" placeholder="Search data"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
         </thead>
         <tbody id="data-output">
             <!-- Repository metadata from JavaScript will be inserted here. -->
         </tbody>
     </table>
+
+    <!-- Your data table will be displayed here -->
 
     <script src="script.js"></script> <!-- Link to the JavaScript file -->
 </body>
