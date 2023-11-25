@@ -14,17 +14,17 @@
             "business-service-name": "gh support"
         }
     },
-    "my-portfolio003": {
-        "application": "Details not available",
-        "contacts": "Details not available",
-        "supports": "Details not available"
-    },
-    "my-portfolio003": {
-        "application": "Details not available",
-        "contacts": "Details not available",
-        "supports": "Details not available"
-    },
     "my-portfolio002": {
+        "application": "Details not available",
+        "contacts": "Details not available",
+        "supports": "Details not available"
+    },
+    "my-portfolio003": {
+        "application": "Details not available",
+        "contacts": "Details not available",
+        "supports": "Details not available"
+    },
+    "my-portfolio004": {
         "application": "my app",
         "contacts": {
             "it-owner": "owner",
