@@ -12,12 +12,12 @@ fetch("repository_metadata.json")
             out += `
                 <tr>
                     <td>${key}</td>
-                    <td>${item.application}</td>
-                    <td>${item.contacts["it-owner"]}</td>
-                    <td>${item.contacts["key-expert"].join(', ')}</td>
-                    <td>${item.contacts["hosted-env"]}</td>
-                    <td>${item.contacts.accessibility}</td>
-                    <td>${item.supports["business-service-name"]}</td>
+                    <td>${item.application || "Details not available"}</td>
+                    <td>${(item.contacts && item.contacts["it-owner"]) || "Details not available"}</td>
+                    <td>${(item.contacts && item.contacts["key-expert"] && item.contacts["key-expert"].join(', ')) || "Details not available"}</td>
+                    <td>${(item.contacts && item.contacts["hosted-env"]) || "Details not available"}</td>
+                    <td>${(item.contacts && item.contacts.accessibility) || "Details not available"}</td>
+                    <td>${(item.supports && item.supports["business-service-name"]) || "Details not available"}</td>
                 </tr>
             `;
         }
