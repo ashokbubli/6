@@ -1,5 +1,20 @@
 {
-    "my-portfolio": {
+    "my-portfolio1": {
+        "application": "my app",
+        "contacts": {
+            "it-owner": "owner",
+            "key-expert": [
+                "user1",
+                "user2"
+            ],
+            "hosted-env": "cloud",
+            "accessibility": "internet"
+        },
+        "supports": {
+            "business-service-name": "gh support"
+        }
+    },
+    "my-portfolio2": {
         "application": "my app",
         "contacts": {
             "it-owner": "owner",
