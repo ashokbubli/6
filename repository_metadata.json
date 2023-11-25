@@ -1,17 +1,17 @@
-    {
-        "Repository_name": {
-            "Application": "my app",
-            "Contacts": {
-               "IT Owner": "owner",
-               "Key-Expert": [
-                   "user1", 
-                   "user2"
-               ],
-               "Hosted Environment": "cloud",
-               "Accessibility": "internet"
-            },
-            "BMC": {
-               "Business Service Name": "gh support"
-            }
+{
+    "Repository_name": {
+        "Application": "my app",
+        "Contacts": {
+            "IT Owner": "owner",
+            "Key-Expert": [
+                "user1",
+                "user2"
+            ],
+            "Hosted Environment": "cloud",
+            "Accessibility": "internet"
+        },
+        "BMC": {
+            "Business Service Name": "gh support"
+        }
     }
-
+}
