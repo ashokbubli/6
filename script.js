@@ -1,27 +1,25 @@
 fetch("repository_metadata.json")
-    .then(function (response) {
+    .then(function(response){
         return response.json();
     })
-    .then(function (metadata) {
+    .then(function(metadata){
         let placeholder = document.querySelector("#data-output");
         let out = "";
 
-        for (let repoName in metadata) {
-            if (metadata.hasOwnProperty(repoName)) {
-                let repoData = metadata[repoName];
+        for(let key in metadata){
+            let item = metadata[key];
 
-                out += `
-                    <tr>
-                        <td>${repoName}</td>
-                        <td>${repoData.application}</td>
-                        <td>${repoData.contacts["it-owner"]}</td>
-                        <td>${repoData.contacts["key-expert"].join(', ')}</td>
-                        <td>${repoData.contacts["hosted-env"]}</td>
-                        <td>${repoData.contacts.accessibility}</td>
-                        <td>${repoData.supports["business-service-name"]}</td>
-                    </tr>
-                `;
-            }
+            out += `
+                <tr>
+                    <td>${key}</td>
+                    <td>${item.application}</td>
+                    <td>${item.contacts["it-owner"]}</td>
+                    <td>${item.contacts["key-expert"].join(', ')}</td>
+                    <td>${item.contacts["hosted-env"]}</td>
+                    <td>${item.contacts.accessibility}</td>
+                    <td>${item.supports["business-service-name"]}</td>
+                </tr>
+            `;
         }
 
         placeholder.innerHTML = out;
