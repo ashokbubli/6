@@ -1,32 +1,17 @@
 {
-    "Repository1": {
-        "Application": "my app",
-        "Contacts": {
-            "IT Owner": "owner",
-            "Key-Expert": [
+    "my-portfolio": {
+        "application": "my app",
+        "contacts": {
+            "it-owner": "owner",
+            "key-expert": [
                 "user1",
                 "user2"
             ],
-            "Hosted Environment": "cloud",
-            "Accessibility": "internet"
+            "hosted-env": "cloud",
+            "accessibility": "internet"
         },
-        "BMC": {
-            "Business Service Name": "gh support"
-        }
-    },
-        "Repository2": {
-        "Application": "my app",
-        "Contacts": {
-            "IT Owner": 
-            "Key-Expert": [
-                "user1",
-                "user2"
-            ],
-            "Hosted Environment": "cloud",
-            "Accessibility": "internet"
-        },
-        "BMC": {
-            "Business Service Name": "gh support"
+        "supports": {
+            "business-service-name": "gh support"
         }
     }
 }
