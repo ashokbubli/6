@@ -6,12 +6,12 @@ fetch("repository_metadata.json")
         let placeholder = document.querySelector("#data-output");
         let out = "";
 
-        for(let repo in metadata){
-            let item = metadata[repo];
+        for(let key in metadata){
+            let item = metadata[key];
 
             out += `
                 <tr>
-                    <td>${repo}</td>
+                    <td>${key}</td>
                     <td>${item.application}</td>
                     <td>${item.contacts["it-owner"]}</td>
                     <td>${item.contacts["key-expert"].join(', ')}</td>
