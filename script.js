@@ -24,4 +24,7 @@ fetch("repository_metadata.json")
         }
 
         placeholder.innerHTML = out;
+    })
+    .catch(function (error) {
+        console.error("Error fetching data:", error);
     });
