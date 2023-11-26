@@ -20,23 +20,38 @@
         "supports": "Details not available"
     },
     "my-portfolio003": {
-        "application": "Details not available",
-        "contacts": "Details not available",
-        "supports": "Details not available"
-    },
+      "application": "my app",
+      "contacts": {
+          "it-owner": "owner",
+          "key-expert": [
+              "user1",
+              "user2"
+          ],
+          "hosted-env": "cloud",
+          "accessibility": "internet"
+      },
+      "supports": {
+          "business-service-name": "gh support"
+      }
+  },
     "my-portfolio004": {
-        "application": "my app",
-        "contacts": {
-            "it-owner": "owner",
-            "key-expert": [
-                "user1",
-                "user2"
-            ],
-            "hosted-env": "cloud",
-            "accessibility": "internet"
-        },
-        "supports": {
-            "business-service-name": "gh support"
-        }
+          "application": "Details not available",
+          "contacts": "Details not available",
+          "supports": "Details not available"
+  },
+    "my-portfolio005": {
+          "application": "my app",
+  "contacts": {
+           "it-owner": "owner",
+      "key-expert": [
+          "user1",
+          "user2"
+      ],
+      "hosted-env": "cloud",
+      "accessibility": "internet"
+    },
+  "supports": {
+      "business-service-name": "gh support"
     }
+  }
 }
