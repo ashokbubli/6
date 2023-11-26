@@ -9,44 +9,47 @@ fetch("repository_metadata.json")
         for(let key in metadata){
             let item = metadata[key];
 
-            // Check if the item is an object and has the expected structure
-            if (typeof item === 'object' &&
-                item.hasOwnProperty('application') &&
-                item.hasOwnProperty('contacts') &&
-                typeof item.contacts === 'object' &&
-                item.contacts.hasOwnProperty('it-owner') &&
-                item.contacts.hasOwnProperty('key-expert') &&
-                Array.isArray(item.contacts['key-expert']) &&
-                item.contacts.hasOwnProperty('hosted-env') &&
-                item.contacts.hasOwnProperty('accessibility') &&
-                item.hasOwnProperty('servicenow') &&
-                typeof item.servicenow === 'object' &&
-                item.servicenow.hasOwnProperty('business-service-name')) {
-
-                out += `
-                    <tr>
-                        <td>${key}</td>
-                        <td>${item.application || "Details not available"}</td>
-                        <td>${item.contacts["it-owner"] || "Details not available"}</td>
-                        <td>${item.contacts["key-expert"].join(', ') || "Details not available"}</td>
-                        <td>${item.contacts["hosted-env"] || "Details not available"}</td>
-                        <td>${item.contacts.accessibility || "Details not available"}</td>
-                        <td>${item.servicenow["business-service-name"] || "Details not available"}</td>
-                    </tr>
-                `;
+            out += "<tr>";
+            out += `<td>${key}</td>`;
+            
+            if (item.application !== undefined) {
+                out += `<td>${item.application}</td>`;
             } else {
-                // Handle cases where the structure is not as expected
-                out += `
-                    <tr>
-                        <td>${key}</td>
-                        <td colspan="6">Details not available</td>
-                    </tr>
-                `;
+                out += "<td></td>";
             }
+
+            if (item.contacts !== undefined && item.contacts["it-owner"] !== undefined) {
+                out += `<td>${item.contacts["it-owner"]}</td>`;
+            } else {
+                out += "<td></td>";
+            }
+
+            if (item.contacts !== undefined && item.contacts["key-expert"] !== undefined) {
+                out += `<td>${item.contacts["key-expert"].join(', ')}</td>`;
+            } else {
+                out += "<td></td>";
+            }
+
+            if (item.contacts !== undefined && item.contacts["hosted-env"] !== undefined) {
+                out += `<td>${item.contacts["hosted-env"]}</td>`;
+            } else {
+                out += "<td></td>";
+            }
+
+            if (item.contacts !== undefined && item.contacts.accessibility !== undefined) {
+                out += `<td>${item.contacts.accessibility}</td>`;
+            } else {
+                out += "<td></td>";
+            }
+
+            if (item.servicenow !== undefined && item.servicenow["business-service-name"] !== undefined) {
+                out += `<td>${item.servicenow["business-service-name"]}</td>`;
+            } else {
+                out += "<td></td>";
+            }
+
+            out += "</tr>";
         }
 
         placeholder.innerHTML = out;
-    })
-    .catch(function(error) {
-        console.error('Error fetching data:', error);
     });
