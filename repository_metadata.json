@@ -25,7 +25,7 @@
           "it-owner": "owner",
           "key-expert": [
               "user1",
-              "user2"
+              "user2",
               "user3"
           ],
           "hosted-env": "cloud",
