@@ -9,18 +9,44 @@ fetch("repository_metadata.json")
         for(let key in metadata){
             let item = metadata[key];
 
-            out += `
-                <tr>
-                    <td>${key}</td>
-                    <td>${item.application || "Details not available"}</td>
-                    <td>${(item.contacts && item.contacts["it-owner"]) || "Details not available"}</td>
-                    <td>${(item.contacts && item.contacts["key-expert"] && item.contacts["key-expert"].join(', ')) || "Details not available"}</td>
-                    <td>${(item.contacts && item.contacts["hosted-env"]) || "Details not available"}</td>
-                    <td>${(item.contacts && item.contacts.accessibility) || "Details not available"}</td>
-                    <td>${(item.supports && item.supports["business-service-name"]) || "Details not available"}</td>
-                </tr>
-            `;
+            // Check if the item is an object and has the expected structure
+            if (typeof item === 'object' &&
+                item.hasOwnProperty('application') &&
+                item.hasOwnProperty('contacts') &&
+                typeof item.contacts === 'object' &&
+                item.contacts.hasOwnProperty('it-owner') &&
+                item.contacts.hasOwnProperty('key-expert') &&
+                Array.isArray(item.contacts['key-expert']) &&
+                item.contacts.hasOwnProperty('hosted-env') &&
+                item.contacts.hasOwnProperty('accessibility') &&
+                item.hasOwnProperty('supports') &&
+                typeof item.supports === 'object' &&
+                item.supports.hasOwnProperty('business-service-name')) {
+
+                out += `
+                    <tr>
+                        <td>${key}</td>
+                        <td>${item.application || "Details not available"}</td>
+                        <td>${item.contacts["it-owner"] || "Details not available"}</td>
+                        <td>${item.contacts["key-expert"].join(', ') || "Details not available"}</td>
+                        <td>${item.contacts["hosted-env"] || "Details not available"}</td>
+                        <td>${item.contacts.accessibility || "Details not available"}</td>
+                        <td>${item.supports["business-service-name"] || "Details not available"}</td>
+                    </tr>
+                `;
+            } else {
+                // Handle cases where the structure is not as expected
+                out += `
+                    <tr>
+                        <td>${key}</td>
+                        <td colspan="6">Details not available</td>
+                    </tr>
+                `;
+            }
         }
 
         placeholder.innerHTML = out;
+    })
+    .catch(function(error) {
+        console.error('Error fetching data:', error);
     });
