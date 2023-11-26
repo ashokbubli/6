@@ -19,9 +19,9 @@ fetch("repository_metadata.json")
                 Array.isArray(item.contacts['key-expert']) &&
                 item.contacts.hasOwnProperty('hosted-env') &&
                 item.contacts.hasOwnProperty('accessibility') &&
-                item.hasOwnProperty('supports') &&
-                typeof item.supports === 'object' &&
-                item.supports.hasOwnProperty('business-service-name')) {
+                item.hasOwnProperty('servicenow') &&
+                typeof item.servicenow === 'object' &&
+                item.servicenow.hasOwnProperty('business-service-name')) {
 
                 out += `
                     <tr>
@@ -31,7 +31,7 @@ fetch("repository_metadata.json")
                         <td>${item.contacts["key-expert"].join(', ') || "Details not available"}</td>
                         <td>${item.contacts["hosted-env"] || "Details not available"}</td>
                         <td>${item.contacts.accessibility || "Details not available"}</td>
-                        <td>${item.supports["business-service-name"] || "Details not available"}</td>
+                        <td>${item.servicenow["business-service-name"] || "Details not available"}</td>
                     </tr>
                 `;
             } else {
