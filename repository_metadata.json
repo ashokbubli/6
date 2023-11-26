@@ -10,14 +10,14 @@
             "hosted-env": "cloud",
             "accessibility": "internet"
         },
-        "supports": {
+        "servicenow": {
             "business-service-name": "gh support"
         }
     },
     "my-portfolio002": {
         "application": "",
         "contacts": {},
-        "supports": {}
+        "servicenow": {}
     },
     "my-portfolio003": {
         "application": "my app",
@@ -31,14 +31,14 @@
             "hosted-env": "cloud",
             "accessibility": "internet"
         },
-        "supports": {
+        "servicenow": {
             "business-service-name": "gh support"
         }
     },
     "my-portfolio004": {
         "application": "Details not available",
         "contacts": "Details not available",
-        "supports": "Details not available"
+        "servicenow": "Details not available"
     },
     "my-portfolio005": {
         "application": "Null",
@@ -50,13 +50,13 @@
             "hosted-env": "cloud",
             "accessibility": "internet"
         },
-        "supports": {
+        "servicenow": {
             "business-service-name": ""
         }
     },
     "my-portfolio006": {
         "application": "",
         "contacts": {},
-        "supports": {}
+        "servicenow": {}
     }
 }
