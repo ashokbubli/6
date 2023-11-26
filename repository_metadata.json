@@ -20,43 +20,43 @@
         "supports": {}
     },
     "my-portfolio003": {
-      "application": "my app",
-      "contacts": {
-          "it-owner": "owner",
-          "key-expert": [
-              "user1",
-              "user2",
-              "user3"
-          ],
-          "hosted-env": "cloud",
-          "accessibility": "internet"
-      },
-      "supports": {
-          "business-service-name": "gh support"
-      }
-  },
-    "my-portfolio004": {
-          "application": "Details not available",
-          "contacts": "Details not available",
-          "supports": "Details not available"
-  },
-    "my-portfolio005": {
-          "application": "",
-  "contacts": {
-           "it-owner": "owner",
-      "key-expert": [
-          "user1"
-      ],
-      "hosted-env": "cloud",
-      "accessibility": "internet"
+        "application": "my app",
+        "contacts": {
+            "it-owner": "owner",
+            "key-expert": [
+                "user1",
+                "user2",
+                "user3"
+            ],
+            "hosted-env": "cloud",
+            "accessibility": "internet"
+        },
+        "supports": {
+            "business-service-name": "gh support"
+        }
     },
-  "supports": {
-      "business-service-name": ""
+    "my-portfolio004": {
+        "application": "Details not available",
+        "contacts": "Details not available",
+        "supports": "Details not available"
+    },
+    "my-portfolio005": {
+        "application": "",
+        "contacts": {
+            "it-owner": "owner",
+            "key-expert": [
+                "user1"
+            ],
+            "hosted-env": "cloud",
+            "accessibility": "internet"
+        },
+        "supports": {
+            "business-service-name": ""
+        }
     },
     "my-portfolio006": {
-      "application": "",
-      "contacts": {},
-      "supports": {}
+        "application": "",
+        "contacts": {},
+        "supports": {}
     }
-  }
 }
