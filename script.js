@@ -45,6 +45,12 @@ fetch("repository_metadata.json")
 
         // Function to toggle filter row visibility
         window.toggleFilter = function (filterId) {
+            if (filterId === 'filter-repository') {
+                filterApplicationInput.value = ''; // Clear application filter
+            } else {
+                filterRepositoryInput.value = ''; // Clear repository filter
+            }
+
             filterRow.style.display = (filterRow.style.display === "none") ? "table-row" : "none";
             let filterInput = document.getElementById(filterId);
             filterInput.focus();
