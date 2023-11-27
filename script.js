@@ -45,20 +45,8 @@ fetch("repository_metadata.json")
 
         // Function to toggle filter row visibility
         window.toggleFilter = function (filterId) {
-            let filterRepositoryInput = document.querySelector("#filter-repository");
-            let filterApplicationInput = document.querySelector("#filter-application");
-
-            filterRepositoryInput.value = ''; // Clear repository filter
-            filterApplicationInput.value = ''; // Clear application filter
-
-            if (filterId === 'filter-repository') {
-                filterApplicationInput.dispatchEvent(new Event('input')); // Trigger application filter
-            } else {
-                filterRepositoryInput.dispatchEvent(new Event('input')); // Trigger repository filter
-            }
-
-            let filterInput = document.getElementById(filterId);
             filterRow.style.display = (filterRow.style.display === "none") ? "table-row" : "none";
+            let filterInput = document.getElementById(filterId);
             filterInput.focus();
         };
     });
