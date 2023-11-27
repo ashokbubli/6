@@ -55,7 +55,7 @@
         }
     },
     "test": {
-        "application": idk,
+        "application": "idk",
         "contacts": {},
         "servicenow": {}
     }
