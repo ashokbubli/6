@@ -5,6 +5,7 @@ fetch("repository_metadata.json")
     .then(function(metadata){
         let placeholder = document.querySelector("#data-output");
         let filterInput = document.querySelector("#filter-repository");
+        let filterRow = document.getElementById("filter-row");
         let out = "";
 
         function applyFilter() {
@@ -37,4 +38,9 @@ fetch("repository_metadata.json")
 
         // Add event listener for real-time filtering
         filterInput.addEventListener("input", applyFilter);
+
+        // Function to toggle filter row visibility
+        window.toggleFilter = function () {
+            filterRow.style.display = (filterRow.style.display === "none") ? "table-row" : "none";
+        };
     });
