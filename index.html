@@ -43,8 +43,8 @@
     <table>
         <thead>
             <tr>
-                <th>Repository <span id="filter-arrow" class="arrow" onclick="toggleFilter()">&#9660;</span></th>
-                <th>Application</th>
+                <th>Repository <span id="filter-arrow" class="arrow" onclick="toggleFilter('filter-repository')">&#9660;</span></th>
+                <th>Application <span id="filter-arrow-app" class="arrow" onclick="toggleFilter('filter-application')">&#9660;</span></th>
                 <th>IT Owner</th>
                 <th>Key Expert</th>
                 <th>Hosted Environment</th>
@@ -53,7 +53,7 @@
             </tr>
             <tr id="filter-row" style="display: none;">
                 <th><input type="text" id="filter-repository" class="filter-input" placeholder="Filter"></th>
-                <th></th>
+                <th><input type="text" id="filter-application" class="filter-input" placeholder="Filter"></th>
                 <th></th>
                 <th></th>
                 <th></th>
