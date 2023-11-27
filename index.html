@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <style>
+        .arrow {
+            cursor: pointer;
+            font-size: 10px;
+            margin-left: 5px;
+        }
+
         .filter-container {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 10px;
+            display: none;
         }
 
         .filter-input {
@@ -32,7 +35,7 @@
     </div>
 
     <div class="heading-container">
-        <h1>A Aspire7 5 Starter Template</h1>
+        <h1>A Bootstrap 5 Starter Template</h1>
         <p class="lead">A complete project boilerplate built with Bootstrap</p>
         <p>Bootstrap v5.2.3</p>
     </div>
@@ -40,13 +43,22 @@
     <table>
         <thead>
             <tr>
-                <th>Repository <input type="text" id="filter-repository" class="filter-input" placeholder="Filter"></th>
+                <th>Repository <span id="filter-arrow" class="arrow" onclick="toggleFilter()">&#9660;</span></th>
                 <th>Application</th>
                 <th>IT Owner</th>
                 <th>Key Expert</th>
                 <th>Hosted Environment</th>
                 <th>Accessibility</th>
                 <th>Business Service Name</th>
+            </tr>
+            <tr id="filter-row" style="display: none;">
+                <th><input type="text" id="filter-repository" class="filter-input" placeholder="Filter"></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody id="data-output">
