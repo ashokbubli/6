@@ -52,4 +52,31 @@ fetch("repository_metadata.json")
         }
 
         placeholder.innerHTML = out;
+
+        // Add event listeners for filter inputs
+        let filterInputs = document.querySelectorAll(".filter-input");
+        filterInputs.forEach(function(input) {
+            input.addEventListener("input", function() {
+                filterTable(input);
+            });
+        });
     });
+
+function filterTable(input) {
+    let columnIndex = input.dataset.column;
+    let filterValue = input.value.toUpperCase();
+    let table = document.querySelector("table");
+    let rows = table.querySelectorAll("tbody tr");
+
+    rows.forEach(function(row) {
+        let cells = row.getElementsByTagName("td")[columnIndex];
+        if (cells) {
+            let cellText = cells.textContent || cells.innerText;
+            if (cellText.toUpperCase().indexOf(filterValue) > -1) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        }
+    });
+}
