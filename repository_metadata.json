@@ -36,9 +36,9 @@
         }
     },
     "my-portfolio004": {
-        "application": "Details not available",
-        "contacts": "Details not available",
-        "servicenow": "Details not available"
+        "application": "",
+        "contacts": "",
+        "servicenow": ""
     },
     "my-portfolio005": {
         "application": "Null",
