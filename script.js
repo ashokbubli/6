@@ -20,7 +20,12 @@ fetch("repository_metadata.json")
 
                 out += "<tr>";
                 out += `<td>${key}</td>`;
-                // ... (rest of the code remains the same)
+                out += `<td>${item.application || ""}</td>`;
+                out += `<td>${item.contacts ? item.contacts["it-owner"] || "" : ""}</td>`;
+                out += `<td>${item.contacts ? (item.contacts["key-expert"] ? item.contacts["key-expert"].join(', ') : "") : ""}</td>`;
+                out += `<td>${item.contacts ? item.contacts["hosted-env"] || "" : ""}</td>`;
+                out += `<td>${item.contacts ? item.contacts.accessibility || "" : ""}</td>`;
+                out += `<td>${item.servicenow ? item.servicenow["business-service-name"] || "" : ""}</td>`;
                 out += "</tr>";
             });
 
