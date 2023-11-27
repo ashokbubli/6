@@ -4,15 +4,18 @@ fetch("repository_metadata.json")
     })
     .then(function(metadata){
         let placeholder = document.querySelector("#data-output");
-        let filterInput = document.querySelector("#filter-repository");
+        let filterRepositoryInput = document.querySelector("#filter-repository");
+        let filterApplicationInput = document.querySelector("#filter-application");
         let filterRow = document.getElementById("filter-row");
         let out = "";
 
         function applyFilter() {
-            let filterValue = filterInput.value.toLowerCase();
+            let filterRepositoryValue = filterRepositoryInput.value.toLowerCase();
+            let filterApplicationValue = filterApplicationInput.value.toLowerCase();
 
             let filteredMetadata = Object.keys(metadata).filter(key =>
-                key.toLowerCase().includes(filterValue)
+                key.toLowerCase().includes(filterRepositoryValue) &&
+                (metadata[key].application || "").toLowerCase().includes(filterApplicationValue)
             );
 
             out = "";
@@ -36,11 +39,14 @@ fetch("repository_metadata.json")
         // Initial rendering
         applyFilter();
 
-        // Add event listener for real-time filtering
-        filterInput.addEventListener("input", applyFilter);
+        // Add event listeners for real-time filtering
+        filterRepositoryInput.addEventListener("input", applyFilter);
+        filterApplicationInput.addEventListener("input", applyFilter);
 
         // Function to toggle filter row visibility
-        window.toggleFilter = function () {
+        window.toggleFilter = function (filterId) {
+            let filterInput = document.getElementById(filterId);
             filterRow.style.display = (filterRow.style.display === "none") ? "table-row" : "none";
+            filterInput.focus();
         };
     });
