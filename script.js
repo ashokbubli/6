@@ -13,10 +13,20 @@ fetch("repository_metadata.json")
             let filterRepositoryValue = filterRepositoryInput.value.toLowerCase();
             let filterApplicationValue = filterApplicationInput.value.toLowerCase();
 
-            let filteredMetadata = Object.keys(metadata).filter(key =>
-                key.toLowerCase().includes(filterRepositoryValue) &&
-                (metadata[key].application || "").toLowerCase().includes(filterApplicationValue)
-            );
+            let filteredMetadata = Object.keys(metadata).filter(key => {
+                let item = metadata[key];
+
+                let matchesRepository = key.toLowerCase().includes(filterRepositoryValue);
+                let matchesApplication = (item.application || "").toLowerCase().includes(filterApplicationValue);
+
+                // Check if at least one cell in the row contains data
+                return matchesRepository || matchesApplication ||
+                    (item.contacts && (item.contacts["it-owner"] || "").toLowerCase().includes(filterRepositoryValue)) ||
+                    (item.contacts && (item.contacts["key-expert"] ? item.contacts["key-expert"].join(', ') : "").toLowerCase().includes(filterRepositoryValue)) ||
+                    (item.contacts && (item.contacts["hosted-env"] || "").toLowerCase().includes(filterRepositoryValue)) ||
+                    (item.contacts && (item.contacts.accessibility || "").toLowerCase().includes(filterRepositoryValue)) ||
+                    (item.servicenow && (item.servicenow["business-service-name"] || "").toLowerCase().includes(filterRepositoryValue));
+            });
 
             out = "";
             filteredMetadata.forEach(key => {
