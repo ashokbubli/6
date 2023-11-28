@@ -13,21 +13,18 @@ fetch("repository_metadata.json")
                 let totalRepositoriesElement = document.getElementById("total-repositories");
                 let lastUpdatedElement = document.getElementById("last-updated");
 
+                let out = "";
+
                 function applyFilter() {
                     let filterRepositoryValue = filterRepositoryInput.value.toLowerCase();
                     let filterApplicationValue = filterApplicationInput.value.toLowerCase();
 
-                    let filteredMetadata = Object.keys(metadata).filter(key => {
-                        let repositoryMatches = key.toLowerCase().includes(filterRepositoryValue);
-                        let applicationMatches = !filterApplicationValue || (
-                            metadata[key].application &&
-                            metadata[key].application.toLowerCase().includes(filterApplicationValue)
-                        );
+                    let filteredMetadata = Object.keys(metadata).filter(key =>
+                        key.toLowerCase().includes(filterRepositoryValue) &&
+                        (metadata[key].application !== undefined && metadata[key].application.toLowerCase().includes(filterApplicationValue))
+                    );
 
-                        return repositoryMatches && applicationMatches;
-                    });
-
-                    let out = "";
+                    out = "";
                     filteredMetadata.forEach(key => {
                         let item = metadata[key];
 
