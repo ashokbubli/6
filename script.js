@@ -19,12 +19,12 @@ fetch("repository_metadata.json")
 
                     let filteredMetadata = Object.keys(metadata).filter(key => {
                         let repositoryMatches = key.toLowerCase().includes(filterRepositoryValue);
-                        let applicationMatches = (
+                        let applicationMatches = !filterApplicationValue || (
                             metadata[key].application &&
                             metadata[key].application.toLowerCase().includes(filterApplicationValue)
                         );
 
-                        return repositoryMatches && (applicationMatches || filterApplicationValue === "");
+                        return repositoryMatches && applicationMatches;
                     });
 
                     let out = "";
