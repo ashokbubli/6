@@ -45,15 +45,12 @@ fetch("repository_metadata.json")
 
         // Function to toggle filter row visibility
         window.toggleFilter = function (filterId) {
-            let filterRepositoryInput = document.querySelector("#filter-repository");
-            let filterApplicationInput = document.querySelector("#filter-application");
-
-            filterRepositoryInput.value = ''; // Clear repository filter
-            filterApplicationInput.value = ''; // Clear application filter
-
+            // Hide the other filter input box when toggling
             if (filterId === 'filter-repository') {
+                filterApplicationInput.value = ''; // Clear application filter
                 filterApplicationInput.dispatchEvent(new Event('input')); // Trigger application filter
             } else {
+                filterRepositoryInput.value = ''; // Clear repository filter
                 filterRepositoryInput.dispatchEvent(new Event('input')); // Trigger repository filter
             }
 
