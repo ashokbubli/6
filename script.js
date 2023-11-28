@@ -19,10 +19,8 @@ fetch("repository_metadata.json")
 
                     let filteredMetadata = Object.keys(metadata).filter(key => {
                         let repositoryMatches = key.toLowerCase().includes(filterRepositoryValue);
-                        let applicationMatches = !filterApplicationValue || (
-                            metadata[key].application &&
-                            metadata[key].application.toLowerCase().includes(filterApplicationValue)
-                        );
+                        let applicationMatches = metadata[key].application &&
+                            metadata[key].application.toLowerCase().includes(filterApplicationValue);
 
                         return repositoryMatches && applicationMatches;
                     });
@@ -31,9 +29,13 @@ fetch("repository_metadata.json")
                     filteredMetadata.forEach(key => {
                         let item = metadata[key];
 
+                        if (!item.application) {
+                            return; // Skip rows with blank or null application
+                        }
+
                         out += "<tr>";
                         out += `<td>${key}</td>`;
-                        out += `<td>${item.application || ""}</td>`;
+                        out += `<td>${item.application}</td>`;
                         out += `<td>${item.contacts ? item.contacts["it-owner"] || "" : ""}</td>`;
                         out += `<td>${item.contacts ? (item.contacts["key-expert"] ? item.contacts["key-expert"].join(', ') : "") : ""}</td>`;
                         out += `<td>${item.contacts ? item.contacts["hosted-env"] || "" : ""}</td>`;
