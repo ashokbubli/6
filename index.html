@@ -5,9 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Your existing styles */
+        .arrow {
+            cursor: pointer;
+            font-size: 10px;
+            margin-left: 5px;
+        }
 
-        #total-repositories {
+        .filter-container {
+            display: none;
+        }
+
+        .filter-input {
+            width: 100%;
+            padding: 5px;
+        }
+
+        .heading-container {
             text-align: center;
             padding: 20px;
         }
@@ -25,14 +38,29 @@
         <h1>A Bootstrap 5 Starter Template</h1>
         <p class="lead">A complete project boilerplate built with Bootstrap</p>
         <p>Bootstrap v5.2.3</p>
+        <div id="total-repositories"></div> <!-- Added line for total repositories -->
     </div>
-
-    <!-- Move the Total number of Repositories here -->
-    <div id="total-repositories" class="total-repositories"></div>
-
+    
     <table>
         <thead>
-            <!-- Your table header content -->
+            <tr>
+                <th>Repository <span id="filter-arrow" class="arrow" onclick="toggleFilter('filter-repository')">&#9660;</span></th>
+                <th>Application <span id="filter-arrow-app" class="arrow" onclick="toggleFilter('filter-application')">&#9660;</span></th>
+                <th>IT Owner</th>
+                <th>Key Expert</th>
+                <th>Hosted Environment</th>
+                <th>Accessibility</th>
+                <th>Business Service Name</th>
+            </tr>
+            <tr id="filter-row" style="display: none;">
+                <th><input type="text" id="filter-repository" class="filter-input" placeholder="Filter"></th>
+                <th><input type="text" id="filter-application" class="filter-input" placeholder="Filter"></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
         </thead>
         <tbody id="data-output">
             <!-- Repository metadata from JavaScript will be inserted here. -->
@@ -40,63 +68,5 @@
     </table>
 
     <script src="script.js"></script>
-    <script>
-        fetch("repository_metadata.json")
-            .then(function(response){
-                return response.json();
-            })
-            .then(function(metadata){
-                let placeholder = document.querySelector("#data-output");
-                let filterRepositoryInput = document.querySelector("#filter-repository");
-                let filterApplicationInput = document.querySelector("#filter-application");
-                let filterRow = document.getElementById("filter-row");
-                let totalRepositoriesContainer = document.getElementById("total-repositories");
-                let out = "";
-
-                function applyFilter() {
-                    let filterRepositoryValue = filterRepositoryInput.value.toLowerCase();
-                    let filterApplicationValue = filterApplicationInput.value.toLowerCase();
-
-                    let filteredMetadata = Object.keys(metadata).filter(key =>
-                        key.toLowerCase().includes(filterRepositoryValue) &&
-                        (metadata[key].application || "").toLowerCase().includes(filterApplicationValue)
-                    );
-
-                    out = "";
-                    filteredMetadata.forEach(key => {
-                        let item = metadata[key];
-
-                        out += "<tr>";
-                        out += `<td>${key}</td>`;
-                        out += `<td>${item.application || ""}</td>`;
-                        out += `<td>${item.contacts ? item.contacts["it-owner"] || "" : ""}</td>`;
-                        out += `<td>${item.contacts ? (item.contacts["key-expert"] ? item.contacts["key-expert"].join(', ') : "") : ""}</td>`;
-                        out += `<td>${item.contacts ? item.contacts["hosted-env"] || "" : ""}</td>`;
-                        out += `<td>${item.contacts ? item.contacts.accessibility || "" : ""}</td>`;
-                        out += `<td>${item.servicenow ? item.servicenow["business-service-name"] || "" : ""}</td>`;
-                        out += "</tr>";
-                    });
-
-                    // Display total repositories information
-                    totalRepositoriesContainer.textContent = `Total number of Repositories = ${filteredMetadata.length}`;
-
-                    placeholder.innerHTML = out;
-                }
-
-                // Initial rendering
-                applyFilter();
-
-                // Add event listeners for real-time filtering
-                filterRepositoryInput.addEventListener("input", applyFilter);
-                filterApplicationInput.addEventListener("input", applyFilter);
-
-                // Function to toggle filter row visibility
-                window.toggleFilter = function (filterId) {
-                    let filterInput = document.getElementById(filterId);
-                    filterRow.style.display = (filterRow.style.display === "none") ? "table-row" : "none";
-                    filterInput.focus();
-                };
-            });
-    </script>
 </body>
 </html>
