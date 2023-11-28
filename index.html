@@ -5,59 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <style>
-        .arrow {
-            cursor: pointer;
-            font-size: 10px;
-            margin-left: 5px;
-        }
-
-        .filter-container {
-            display: none;
-        }
-
-        .filter-input {
-            width: 100%;
-            padding: 5px;
-        }
-
-        .heading-container {
-            text-align: center;
-            padding: 20px;
-        }
-
-        #info-container {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px; /* Increased margin */
-        }
-
-         #total-repositories {
-            text-align: left; 
-            
-            margin-left: 265px; 
-        }
-                #last-updated {
-            text-align: right; 
-           
-            margin-right: 273px; 
-        }
-    
-
-        table {
-            margin-top: 50px;
-        }
-
-        th, td {
-            text-align: left;
-        }
+        /* Your existing styles here */
     </style>
     <title>Repository Metadata</title>
 </head>
 <body>
     <div class="container">
-        <div class="filter-container">
-            <input type="text" id="filter" class="filter-input" placeholder="Search data">
-        </div>
+        <!-- Remove filter container and input -->
     </div>
 
     <div class="heading-container">
@@ -74,22 +28,13 @@
     <table>
         <thead>
             <tr>
-                <th>Repository <span id="filter-arrow" class="arrow" onclick="toggleFilter('filter-repository')">&#9660;</span></th>
-                <th>Application <span id="filter-arrow-app" class="arrow" onclick="toggleFilter('filter-application')">&#9660;</span></th>
+                <th>Repository</th>
+                <th>Application</th>
                 <th>IT Owner</th>
                 <th>Key Expert</th>
                 <th>Hosted Environment</th>
                 <th>Accessibility</th>
                 <th>Business Service Name</th>
-            </tr>
-            <tr id="filter-row" style="display: none;">
-                <th><input type="text" id="filter-repository" class="filter-input" placeholder="Filter"></th>
-                <th><input type="text" id="filter-application" class="filter-input" placeholder="Filter"></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
             </tr>
         </thead>
         <tbody id="data-output">
