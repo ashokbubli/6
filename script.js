@@ -7,18 +7,8 @@ fetch("repository_metadata.json")
         let filterRepositoryInput = document.querySelector("#filter-repository");
         let filterApplicationInput = document.querySelector("#filter-application");
         let filterRow = document.getElementById("filter-row");
+        let totalRepositoriesContainer = document.getElementById("total-repositories");
         let out = "";
-
-        // Add the total_repositories data at the top
-        out += "<tr>";
-        out += `<td>Total Repositories</td>`;
-        out += `<td>${metadata.total_repositories || ""}</td>`;
-        out += `<td></td>`;
-        out += `<td></td>`;
-        out += `<td></td>`;
-        out += `<td></td>`;
-        out += `<td></td>`;
-        out += "</tr>";
 
         function applyFilter() {
             let filterRepositoryValue = filterRepositoryInput.value.toLowerCase();
@@ -26,16 +16,11 @@ fetch("repository_metadata.json")
 
             let filteredMetadata = Object.keys(metadata).filter(key =>
                 key.toLowerCase().includes(filterRepositoryValue) &&
-                ((metadata[key].application || "").toLowerCase().includes(filterApplicationValue) || filterApplicationValue === "")
+                (metadata[key].application || "").toLowerCase().includes(filterApplicationValue)
             );
 
             out = "";
             filteredMetadata.forEach(key => {
-                // Skip processing for total_repositories
-                if (key === "total_repositories") {
-                    return;
-                }
-
                 let item = metadata[key];
 
                 out += "<tr>";
@@ -48,6 +33,9 @@ fetch("repository_metadata.json")
                 out += `<td>${item.servicenow ? item.servicenow["business-service-name"] || "" : ""}</td>`;
                 out += "</tr>";
             });
+
+            // Display total repositories information
+            totalRepositoriesContainer.textContent = `Total number of Repositories = ${filteredMetadata.length}`;
 
             placeholder.innerHTML = out;
         }
