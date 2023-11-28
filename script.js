@@ -3,11 +3,15 @@ function applyFilter() {
     let filterApplicationValue = filterApplicationInput.value.toLowerCase();
 
     let filteredMetadata = Object.keys(metadata).filter(key => {
-        let applicationValue = (metadata[key].application || "").toLowerCase();
+        let item = metadata[key];
+        let applicationValue = (item.application || "").toLowerCase();
 
+        // Include rows where the "Application" column is empty or null
+        let hasEmptyApplication = filterApplicationValue === "" && (applicationValue === "" || applicationValue === "null");
+
+        // Filter based on repository and application values
         return key.toLowerCase().includes(filterRepositoryValue) &&
-            applicationValue.includes(filterApplicationValue) &&
-            (filterApplicationValue !== '' || applicationValue !== ''); // Filter out blank "Application" values
+            (applicationValue.includes(filterApplicationValue) || hasEmptyApplication);
     });
 
     out = "";
