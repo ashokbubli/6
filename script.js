@@ -9,17 +9,33 @@ fetch("repository_metadata.json")
         let filterRow = document.getElementById("filter-row");
         let out = "";
 
+        // Add the total_repositories data at the top
+        out += "<tr>";
+        out += `<td>Total Repositories</td>`;
+        out += `<td>${metadata.total_repositories || ""}</td>`;
+        out += `<td></td>`;
+        out += `<td></td>`;
+        out += `<td></td>`;
+        out += `<td></td>`;
+        out += `<td></td>`;
+        out += "</tr>";
+
         function applyFilter() {
             let filterRepositoryValue = filterRepositoryInput.value.toLowerCase();
             let filterApplicationValue = filterApplicationInput.value.toLowerCase();
 
             let filteredMetadata = Object.keys(metadata).filter(key =>
                 key.toLowerCase().includes(filterRepositoryValue) &&
-                (metadata[key].application || "").toLowerCase().includes(filterApplicationValue)
+                ((metadata[key].application || "").toLowerCase().includes(filterApplicationValue) || filterApplicationValue === "")
             );
 
             out = "";
             filteredMetadata.forEach(key => {
+                // Skip processing for total_repositories
+                if (key === "total_repositories") {
+                    return;
+                }
+
                 let item = metadata[key];
 
                 out += "<tr>";
