@@ -9,6 +9,7 @@ fetch("repository_metadata.json")
                 let filterRepositoryInput = document.querySelector("#filter-repository");
                 let filterApplicationInput = document.querySelector("#filter-application");
                 let filterRow = document.getElementById("filter-row");
+                let infoContainer = document.getElementById("info-container");
                 let totalRepositoriesElement = document.getElementById("total-repositories");
                 let lastUpdatedElement = document.getElementById("last-updated");
 
