@@ -9,11 +9,8 @@ fetch("repository_metadata.json")
                 let filterRepositoryInput = document.querySelector("#filter-repository");
                 let filterApplicationInput = document.querySelector("#filter-application");
                 let filterRow = document.getElementById("filter-row");
-                let infoContainer = document.getElementById("info-container");
                 let totalRepositoriesElement = document.getElementById("total-repositories");
                 let lastUpdatedElement = document.getElementById("last-updated");
-
-                let out = "";
 
                 function applyFilter() {
                     let filterRepositoryValue = filterRepositoryInput.value.toLowerCase();
@@ -23,7 +20,7 @@ fetch("repository_metadata.json")
                         key.toLowerCase().includes(filterRepositoryValue)
                     );
 
-                    out = "";
+                    let out = "";
                     filteredMetadata.forEach(key => {
                         let item = metadata[key];
 
@@ -48,25 +45,23 @@ fetch("repository_metadata.json")
                 // Initial rendering
                 applyFilter();
 
-                // Add event listeners for real-time filtering
+                // Function to toggle filter row visibility
+                function toggleFilter(filterInput) {
+                    filterRow.style.display = (filterRow.style.display === "none") ? "table-row" : "none";
+                    document.getElementById(filterInput).focus();
+                }
+
+                // Event listeners for real-time filtering
                 filterRepositoryInput.addEventListener("input", applyFilter);
-
-                // Function to toggle filter row visibility for Repository
-                window.toggleFilterRepository = function () {
-                    filterRow.style.display = (filterRow.style.display === "none") ? "table-row" : "none";
-                    filterRepositoryInput.focus();
-                };
-
-                // Function to toggle filter row visibility for Application
-                window.toggleFilterApplication = function () {
-                    filterRow.style.display = (filterRow.style.display === "none") ? "table-row" : "none";
-                    filterApplicationInput.focus();
-                };
-
                 filterApplicationInput.addEventListener("input", applyFilter);
 
-                // Event listener for the arrow icons
-                document.getElementById("filter-arrow").addEventListener("click", window.toggleFilterRepository);
-                document.getElementById("filter-arrow-app").addEventListener("click", window.toggleFilterApplication);
+                // Event listeners for toggling filter row visibility
+                document.getElementById("filter-arrow").addEventListener("click", function() {
+                    toggleFilter("filter-repository");
+                });
+
+                document.getElementById("filter-arrow-app").addEventListener("click", function() {
+                    toggleFilter("filter-application");
+                });
             });
     });
