@@ -63,8 +63,15 @@ table select:focus{
 table img{
 	width:  60%;
 }
-#info-container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 50px; /* Increased margin to move down three lines */
+#total-repositories {
+    text-align: left;
+    margin-top: 50px; /* Increase top margin to move down three lines */
+    margin-left: 265px;
 }
+
+#last-updated {
+    text-align: right;
+    margin-top: 50px; /* Increase top margin to move down three lines */
+    margin-right: 273px;
+}
+
