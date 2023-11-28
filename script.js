@@ -53,18 +53,20 @@ fetch("repository_metadata.json")
 
                 // Function to toggle filter row visibility for Repository
                 window.toggleFilterRepository = function () {
-                    let filterInput = document.getElementById("filter-repository");
                     filterRow.style.display = (filterRow.style.display === "none") ? "table-row" : "none";
-                    filterInput.focus();
+                    filterRepositoryInput.focus();
                 };
 
                 // Function to toggle filter row visibility for Application
                 window.toggleFilterApplication = function () {
-                    let filterInput = document.getElementById("filter-application");
                     filterRow.style.display = (filterRow.style.display === "none") ? "table-row" : "none";
-                    filterInput.focus();
+                    filterApplicationInput.focus();
                 };
 
                 filterApplicationInput.addEventListener("input", applyFilter);
+
+                // Event listener for the arrow icons
+                document.getElementById("filter-arrow").addEventListener("click", window.toggleFilterRepository);
+                document.getElementById("filter-arrow-app").addEventListener("click", window.toggleFilterApplication);
             });
     });
