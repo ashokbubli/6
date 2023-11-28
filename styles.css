@@ -63,3 +63,8 @@ table select:focus{
 table img{
 	width:  60%;
 }
+#info-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px; /* Increased margin to move down three lines */
+}
