@@ -12,9 +12,11 @@ fetch("repository_metadata.json")
 
                 let out = "";
 
-                function renderData() {
+                function applyFilter() {
+                    let filteredMetadata = Object.keys(metadata);
+
                     out = "";
-                    Object.keys(metadata).forEach(key => {
+                    filteredMetadata.forEach(key => {
                         let item = metadata[key];
 
                         out += "<tr>";
@@ -29,13 +31,13 @@ fetch("repository_metadata.json")
                     });
 
                     placeholder.innerHTML = out;
-                    totalRepositoriesElement.innerHTML = `Total number of Repositories = ${Object.keys(metadata).length}`;
+                    totalRepositoriesElement.innerHTML = `Total number of Repositories = ${filteredMetadata.length}`;
 
                     // Display Last updated information
                     lastUpdatedElement.innerHTML = `Last updated: ${lastModified.toLocaleString()}`;
                 }
 
                 // Initial rendering
-                renderData();
+                applyFilter();
             });
     });
