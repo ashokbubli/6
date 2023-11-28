@@ -7,7 +7,8 @@ fetch("repository_metadata.json")
         let filterRepositoryInput = document.querySelector("#filter-repository");
         let filterApplicationInput = document.querySelector("#filter-application");
         let filterRow = document.getElementById("filter-row");
-        let totalRepositoriesContainer = document.getElementById("total-repositories");
+        let totalRepositoriesElement = document.getElementById("total-repositories"); // New line
+
         let out = "";
 
         function applyFilter() {
@@ -34,10 +35,10 @@ fetch("repository_metadata.json")
                 out += "</tr>";
             });
 
-            // Display total repositories information
-            totalRepositoriesContainer.textContent = `Total number of Repositories = ${filteredMetadata.length}`;
-
             placeholder.innerHTML = out;
+
+            // Update total number of repositories
+            totalRepositoriesElement.innerHTML = `Total number of Repositories = ${filteredMetadata.length}`;
         }
 
         // Initial rendering
