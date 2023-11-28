@@ -20,8 +20,7 @@ fetch("repository_metadata.json")
                     let filterApplicationValue = filterApplicationInput.value.toLowerCase();
 
                     let filteredMetadata = Object.keys(metadata).filter(key =>
-                        key.toLowerCase().includes(filterRepositoryValue) &&
-                        (metadata[key].application || "").toLowerCase().includes(filterApplicationValue)
+                        key.toLowerCase().includes(filterRepositoryValue)
                     );
 
                     out = "";
@@ -32,7 +31,7 @@ fetch("repository_metadata.json")
                         out += `<td>${key}</td>`;
                         out += `<td>${item.application || ""}</td>`;
                         out += `<td>${item.contacts ? item.contacts["it-owner"] || "" : ""}</td>`;
-                        out += `<td>${item.contacts ? (item.contacts["key-expert"] ? item.contacts["key-expert"].join(', ') : "") : ""}</td>`;
+                        out += `<td>${item.contacts ? item.contacts["key-expert"] ? item.contacts["key-expert"].join(', ') : "" : ""}</td>`;
                         out += `<td>${item.contacts ? item.contacts["hosted-env"] || "" : ""}</td>`;
                         out += `<td>${item.contacts ? item.contacts.accessibility || "" : ""}</td>`;
                         out += `<td>${item.servicenow ? item.servicenow["business-service-name"] || "" : ""}</td>`;
@@ -51,13 +50,21 @@ fetch("repository_metadata.json")
 
                 // Add event listeners for real-time filtering
                 filterRepositoryInput.addEventListener("input", applyFilter);
-                filterApplicationInput.addEventListener("input", applyFilter);
 
-                // Function to toggle filter row visibility
-                window.toggleFilter = function (filterId) {
-                    let filterInput = document.getElementById(filterId);
+                // Function to toggle filter row visibility for Repository
+                window.toggleFilterRepository = function () {
+                    let filterInput = document.getElementById("filter-repository");
                     filterRow.style.display = (filterRow.style.display === "none") ? "table-row" : "none";
                     filterInput.focus();
                 };
+
+                // Function to toggle filter row visibility for Application
+                window.toggleFilterApplication = function () {
+                    let filterInput = document.getElementById("filter-application");
+                    filterRow.style.display = (filterRow.style.display === "none") ? "table-row" : "none";
+                    filterInput.focus();
+                };
+
+                filterApplicationInput.addEventListener("input", applyFilter);
             });
     });
