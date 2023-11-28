@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Your existing styles here */
+        /* ... existing styles ... */
     </style>
     <title>Repository Metadata</title>
 </head>
 <body>
     <div class="container">
-        <!-- Remove filter container and input -->
+        <div class="filter-container">
+            <input type="text" id="filter" class="filter-input" placeholder="Search data">
+        </div>
     </div>
 
     <div class="heading-container">
@@ -28,13 +30,22 @@
     <table>
         <thead>
             <tr>
-                <th>Repository</th>
-                <th>Application</th>
+                <th>Repository <span id="filter-arrow" class="arrow" onclick="toggleFilter('filter-repository')">&#9660;</span></th>
+                <th>Application <span id="filter-arrow-app" class="arrow" onclick="toggleFilter('filter-application')">&#9660;</span></th>
                 <th>IT Owner</th>
                 <th>Key Expert</th>
                 <th>Hosted Environment</th>
                 <th>Accessibility</th>
                 <th>Business Service Name</th>
+            </tr>
+            <tr id="filter-row" style="display: none;">
+                <th><input type="text" id="filter-repository" class="filter-input" placeholder="Filter"></th>
+                <th><input type="text" id="filter-application" class="filter-input" placeholder="Filter"></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody id="data-output">
