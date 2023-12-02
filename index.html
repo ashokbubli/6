@@ -6,49 +6,40 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            font-family: sans-serif;
             min-height: 100vh;
+            color: #555;
             margin: 0;
         }
 
-        .container {
-            text-align: center;
+        table {
+            width: 90%; /* Use a percentage for responsiveness */
+            margin: 30px auto;
         }
 
-        .heading-container {
-            margin-top: 20px;
-            text-align: center;
+        table th,
+        table td {
+            padding: 1rem; /* Use relative units for padding */
         }
 
-        .lead {
-            margin-bottom: 20px; /* Adjust the margin as needed */
-            margin-top: 10px; /* Adjust the margin-top to move it down */
-        }
-
-        #info-container {
-            width: 80%; /* Adjust the width as needed */
-            margin: 20px auto; /* Adjust the margin as needed */
-            display: flex;
-            justify-content: space-between;
-        }
-
-        #total-repositories {
-            text-align: left; 
-            margin-bottom: 1px;
-            margin-left: 120px; /* Adjust the left margin as needed */
-        }
-
+        #total-repositories,
         #last-updated {
-            text-align: right; 
-            margin-bottom: 1px;
-            margin-right: 140px; /* Adjust the right margin as needed */
+            margin-top: 20px; /* Adjust the top margin as needed */
+            margin-left: 5%; /* Use a percentage for left margin */
+            margin-right: 5%; /* Use a percentage for right margin */
         }
 
-        /* Add your existing styles here */
-        /* ... existing styles ... */
+        @media (max-width: 600px) {
+            table {
+                width: 100%; /* Adjust for smaller screens */
+            }
+
+            #total-repositories,
+            #last-updated {
+                margin-left: 2%; /* Adjust for smaller screens */
+                margin-right: 2%; /* Adjust for smaller screens */
+            }
+        }
     </style>
     <title>Repository Metadata</title>
 </head>
@@ -97,12 +88,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
