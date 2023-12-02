@@ -1,0 +1,9 @@
+{
+  "members": [
+    { "name": "Abc", "contact": "E-mail; Teams Message" },
+    { "name": "Def", "contact": "E-mail; Teams Message" },
+    { "name": "Ghi", "contact": "E-mail; Teams Message" },
+    { "name": "Jkl", "contact": "E-mail; Teams Message" },
+    { "name": "Mno", "contact": "E-mail; Teams Message" }
+  ]
+}
