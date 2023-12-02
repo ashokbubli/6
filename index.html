@@ -33,7 +33,7 @@
             margin: 20px auto;
             display: flex;
             justify-content: space-between;
-            align-items: baseline; /* Align items at the baseline */
+            align-items: baseline;
         }
 
         #total-repositories, #last-updated {
@@ -44,6 +44,7 @@
         table {
             width: 90%;
             margin: 30px auto;
+            border-collapse: collapse;
         }
 
         table th, table td {
@@ -56,24 +57,14 @@
             text-align: center;
             margin-top: 20px;
         }
-
-        #additional-data {
-            display: none;
-            margin-top: 20px;
-        }
-
-        /* Add your existing styles here */
-        /* ... existing styles ... */
     </style>
     <title>Repository Metadata</title>
 </head>
 <body>
     <div class="container">
-        <!-- No search bar here, as requested -->
-    </div>
-
-    <div class="heading-container">
-        <h1><a href="#bootstrap-link" id="bootstrap-link">Bootstrap v5.2.3</a></h1>
+        <a href="target_page.html">
+            <h1>A Bootstrap 5 Starter Template</h1>
+        </a>
         <p class="lead">-_-_-_-_--_-_-_-_--_-_-_-_--_-_-_-_--_-_-_-_--_-_-_-</p>
         <p style="margin-bottom: 20px;">Bootstrap v5.2.3</p>
     </div>
@@ -84,29 +75,28 @@
     </div>
 
     <table>
-        <!-- Your table structure -->
+        <thead>
+            <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Column 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Data 1</td>
+                <td>Data 2</td>
+                <td>Data 3</td>
+            </tr>
+            <tr>
+                <td>Data 4</td>
+                <td>Data 5</td>
+                <td>Data 6</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
     </table>
 
-    <!-- Additional data section -->
-    <div id="additional-data">
-        <h2>ABC Support Team Members</h2>
-        <ul>
-            <li>Abc</li>
-            <li>Def</li>
-            <li>Ghi</li>
-            <li>Jkl</li>
-            <li>Mno</li>
-        </ul>
-    </div>
-
     <script src="script.js"></script>
-
-    <script>
-        // JavaScript to handle the click event on the link
-        document.getElementById("bootstrap-link").addEventListener("click", function() {
-            // Toggle the visibility of the additional data section
-            document.getElementById("additional-data").style.display = "block";
-        });
-    </script>
 </body>
 </html>
