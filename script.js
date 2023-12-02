@@ -1,5 +1,8 @@
 fetch("repository_metadata.json")
     .then(function (response) {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
         const lastModified = new Date(response.headers.get('Last-Modified'));
 
         return response.json()
@@ -28,4 +31,30 @@ fetch("repository_metadata.json")
                         out += `<td>${key}</td>`;
                         out += `<td>${item.application || "N/A"}</td>`;
                         out += `<td>${item.contacts ? item.contacts["it-owner"] || "" : ""}</td>`;
-                        out += `<td>${item.contacts ? (item
+                        out += `<td>${item.contacts ? (item.contacts["key-expert"] ? item.contacts["key-expert"].join(', ') : "") : ""}</td>`;
+                        out += `<td>${item.contacts ? item.contacts["hosted-env"] || "" : ""}</td>`;
+                        out += `<td>${item.contacts ? item.contacts.accessibility || "" : ""}</td>`;
+                        out += `<td>${item.servicenow ? item.servicenow["business-service-name"] || "" : ""}</td>`;
+                        out += "</tr>";
+                    });
+
+                    placeholder.innerHTML = out;
+                    totalRepositoriesElement.innerHTML = `Total number of Repositories = ${filteredMetadata.length}`;
+
+                    lastUpdatedElement.innerHTML = `Last updated: ${lastModified.toLocaleString()}`;
+                }
+
+                applyFilter();
+
+                filterRepositoryInput.addEventListener("input", applyFilter);
+                filterApplicationInput.addEventListener("input", applyFilter);
+
+                window.toggleFilter = function (filterId) {
+                    let filterInput = document.getElementById(filterId);
+                    filterRow.style.display = (filterRow.style.display === "none") ? "table-row" : "none";
+                    filterInput.focus();
+                };
+            })
+            .catch(error => console.error('Error fetching JSON:', error));
+    })
+    .catch(error => console.error('Fetch error:', error));
