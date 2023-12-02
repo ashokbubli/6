@@ -19,9 +19,9 @@ fetch("repository_metadata.json")
                     let filterRepositoryValue = filterRepositoryInput.value.toLowerCase(); 
                     let filterApplicationValue = filterApplicationInput.value.toLowerCase();
 
-                    let filteredMetadata = object.keys(metadata).filter(key =>
+                    let filteredMetadata = Object.keys(metadata).filter(key =>
                         key.toLowerCase().includes(filterRepositoryValue) &&
-                        (metadata[key].application === nul || metadata[key].application === undefined || metadata[key].application === '' || metadata[key].application.toLowerCase().includes(filterApplicationValue))
+                        (metadata[key].application === null || metadata[key].application === undefined || metadata[key].application === '' || metadata[key].application.toLowerCase().includes(filterApplicationValue))
                     );
 
                     out = "",
@@ -40,10 +40,12 @@ fetch("repository_metadata.json")
                     });
 
                     placeholder.innerHTML = out;
-                    totalRepositoriesElement.innerHTML = `Total number of Repositories = $(filteredMetadata.length}`;
+                    totalRepositoriesElement.innerHTML = `Total number of Repositories = ${filteredMetadata.length}`;
+
 
                     // Display the Last updated Info
-                    lastupdatedElement.innerHTML `Last updated: ${lastModified.toLocalestring()}`;
+                    lastupdatedElement.innerHTML = `Last updated: ${lastModified.toLocalestring()}`;
+                    
                 }
 
                 // Initial rendering
