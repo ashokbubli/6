@@ -1,6 +1,5 @@
 fetch("repository_metadata.json")
     .then(function (response) {
-        // Extract the Last modified date and time header from the response 
         const lastModified = new Date(response.headers.get('Last-Modified'));
 
         return response.json()
@@ -9,11 +8,8 @@ fetch("repository_metadata.json")
                 let filterRepositoryInput = document.querySelector("#filter-repository");
                 let filterApplicationInput = document.querySelector("#filter-application");
                 let filterRow = document.getElementById("filter-row");
-                let infoContainer = document.getElementById("info-container");
                 let totalRepositoriesElement = document.getElementById("total-repositories");
                 let lastUpdatedElement = document.getElementById("last-updated");
-
-                let out = "";
 
                 function applyFilter() {
                     let filterRepositoryValue = filterRepositoryInput.value.toLowerCase();
@@ -24,7 +20,7 @@ fetch("repository_metadata.json")
                         (metadata[key].application !== undefined && metadata[key].application !== null && metadata[key].application.toLowerCase().includes(filterApplicationValue))
                     );
 
-                    out = "";
+                    let out = "";
                     filteredMetadata.forEach(key => {
                         let item = metadata[key];
 
@@ -42,28 +38,18 @@ fetch("repository_metadata.json")
                     placeholder.innerHTML = out;
                     totalRepositoriesElement.innerHTML = `Total number of Repositories = ${filteredMetadata.length}`;
 
-                    // Display the Last updated Info
                     lastUpdatedElement.innerHTML = `Last updated: ${lastModified.toLocaleString()}`;
                 }
 
-                // Initial rendering
                 applyFilter();
 
-                // Add event listeners for real-time filtering
                 filterRepositoryInput.addEventListener("input", applyFilter);
                 filterApplicationInput.addEventListener("input", applyFilter);
 
-                // Function to toggle filter row visibility
                 window.toggleFilter = function (filterId) {
                     let filterInput = document.getElementById(filterId);
                     filterRow.style.display = (filterRow.style.display === "none") ? "table-row" : "none";
                     filterInput.focus();
                 };
-
-                // JavaScript to handle the click event on the link
-                document.getElementById("bootstrap-link").addEventListener("click", function() {
-                    // Toggle the visibility of the additional data section
-                    document.getElementById("additional-data").style.display = "block";
-                });
             });
     });
