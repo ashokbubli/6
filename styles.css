@@ -10,36 +10,28 @@ body {
     color: #555;
 }
 
+/* ... existing styles ... */
+
 table {
-    width: 90%; /* Adjusted to a percentage for responsiveness */
+    width: 100%;
     margin: 30px auto;
 }
 
-table th,
+table th {
+    padding: 10px 0;
+    background-color: #f4f4f4;
+    border: thin solid #d4d4d4;
+}
+
 table td {
-    padding: 10px 0.5em; /* Adjusted padding with relative unit */
+    padding: 10px;
     border: thin solid #d4d4d4;
     text-align: center;
-    background-color: #f4f4f4; /* Background color for table headers */
 }
 
-table td {
-    width: auto; /* Adjusted to auto for responsiveness */
+#total-repositories, #last-updated {
+    text-align: center;
+    margin-top: 20px; /* Adjust the margin as needed */
 }
 
-#total-repositories,
-#last-updated {
-    margin-top: 20px; /* Adjusted top margin for both elements */
-}
-
-/* Media query for smaller screens */
-@media screen and (max-width: 768px) {
-    table {
-        width: 100%; /* Full width for smaller screens */
-    }
-
-    #total-repositories,
-    #last-updated {
-        margin-top: 10px; /* Reduced top margin for smaller screens */
-    }
-}
+/* ... existing styles ... */
