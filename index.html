@@ -44,7 +44,6 @@
         table {
             width: 90%;
             margin: 30px auto;
-            border-collapse: collapse;
         }
 
         table th, table td {
@@ -57,14 +56,19 @@
             text-align: center;
             margin-top: 20px;
         }
+
+        /* Add your existing styles here */
+        /* ... existing styles ... */
     </style>
     <title>Repository Metadata</title>
 </head>
 <body>
     <div class="container">
-        <a href="target_page.html">
-            <h1>A Bootstrap 5 Starter Template</h1>
-        </a>
+        <!-- No search bar here, as requested -->
+    </div>
+
+    <div class="heading-container">
+        <h1><a href="support_team.html">Bootstrap v5.2.3</a></h1>
         <p class="lead">-_-_-_-_--_-_-_-_--_-_-_-_--_-_-_-_--_-_-_-_--_-_-_-</p>
         <p style="margin-bottom: 20px;">Bootstrap v5.2.3</p>
     </div>
@@ -77,23 +81,26 @@
     <table>
         <thead>
             <tr>
-                <th>Column 1</th>
-                <th>Column 2</th>
-                <th>Column 3</th>
+                <th>Repository <span id="filter-arrow" class="arrow" onclick="toggleFilter('filter-repository')">&#9660;</span></th>
+                <th>Application <span id="filter-arrow-app" class="arrow" onclick="toggleFilter('filter-application')">&#9660;</span></th>
+                <th>IT Owner</th>
+                <th>Key Expert</th>
+                <th>Hosted Environment</th>
+                <th>Accessibility</th>
+                <th>Business Service Name</th>
+            </tr>
+            <tr id="filter-row" style="display: none;">
+                <th><input type="text" id="filter-repository" class="filter-input" placeholder="Filter"></th>
+                <th><input type="text" id="filter-application" class="filter-input" placeholder="Filter"></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>Data 1</td>
-                <td>Data 2</td>
-                <td>Data 3</td>
-            </tr>
-            <tr>
-                <td>Data 4</td>
-                <td>Data 5</td>
-                <td>Data 6</td>
-            </tr>
-            <!-- Add more rows as needed -->
+        <tbody id="data-output">
+            <!-- Repository metadata from JavaScript will be inserted here. -->
         </tbody>
     </table>
 
