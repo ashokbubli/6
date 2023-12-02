@@ -4,12 +4,7 @@ function applyFilter() {
 
     let filteredMetadata = Object.keys(metadata).filter(key =>
         key.toLowerCase().includes(filterRepositoryValue) &&
-        (
-            metadata[key].application === null || 
-            metadata[key].application === undefined || 
-            metadata[key].application === '' || 
-            metadata[key].application.toLowerCase().includes(filterApplicationValue)
-        )
+        (metadata[key].application !== undefined && metadata[key].application !== null && metadata[key].application.toLowerCase().includes(filterApplicationValue))
     );
 
     out = "";
@@ -18,7 +13,7 @@ function applyFilter() {
 
         out += "<tr>";
         out += `<td>${key}</td>`;
-        out += `<td>${item.application !== null ? item.application : "N/A"}</td>`;
+        out += `<td>${item.application || "N/A"}</td>`;
         out += `<td>${item.contacts ? item.contacts["it-owner"] || "" : ""}</td>`;
         out += `<td>${item.contacts ? (item.contacts["key-expert"] ? item.contacts["key-expert"].join(', ') : "") : ""}</td>`;
         out += `<td>${item.contacts ? item.contacts["hosted-env"] || "" : ""}</td>`;
