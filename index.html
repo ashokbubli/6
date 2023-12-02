@@ -38,11 +38,12 @@
 
         #total-repositories, #last-updated {
             text-align: center;
+            font-weight: bold;
         }
 
         table {
-            width: 90%; /* Adjusted width */
-            margin: 30px auto; /* Increased margin */
+            width: 90%;
+            margin: 30px auto;
         }
 
         table th, table td {
@@ -53,6 +54,11 @@
 
         #total-repositories, #last-updated {
             text-align: center;
+            margin-top: 20px;
+        }
+
+        #additional-data {
+            display: none;
             margin-top: 20px;
         }
 
@@ -67,7 +73,7 @@
     </div>
 
     <div class="heading-container">
-        <h1>A Bak bak bak</h1>
+        <h1><a href="#bootstrap-link" id="bootstrap-link">Bootstrap v5.2.3</a></h1>
         <p class="lead">-_-_-_-_--_-_-_-_--_-_-_-_--_-_-_-_--_-_-_-_--_-_-_-</p>
         <p style="margin-bottom: 20px;">Bootstrap v5.2.3</p>
     </div>
@@ -78,31 +84,29 @@
     </div>
 
     <table>
-        <thead>
-            <tr>
-                <th>Repository <span id="filter-arrow" class="arrow" onclick="toggleFilter('filter-repository')">&#9660;</span></th>
-                <th>Application <span id="filter-arrow-app" class="arrow" onclick="toggleFilter('filter-application')">&#9660;</span></th>
-                <th>IT Owner</th>
-                <th>Key Expert</th>
-                <th>Hosted Environment</th>
-                <th>Accessibility</th>
-                <th>Business Service Name</th>
-            </tr>
-            <tr id="filter-row" style="display: none;">
-                <th><input type="text" id="filter-repository" class="filter-input" placeholder="Filter"></th>
-                <th><input type="text" id="filter-application" class="filter-input" placeholder="Filter"></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody id="data-output">
-            <!-- Repository metadata from JavaScript will be inserted here. -->
-        </tbody>
+        <!-- Your table structure -->
     </table>
 
+    <!-- Additional data section -->
+    <div id="additional-data">
+        <h2>ABC Support Team Members</h2>
+        <ul>
+            <li>Abc</li>
+            <li>Def</li>
+            <li>Ghi</li>
+            <li>Jkl</li>
+            <li>Mno</li>
+        </ul>
+    </div>
+
     <script src="script.js"></script>
+
+    <script>
+        // JavaScript to handle the click event on the link
+        document.getElementById("bootstrap-link").addEventListener("click", function() {
+            // Toggle the visibility of the additional data section
+            document.getElementById("additional-data").style.display = "block";
+        });
+    </script>
 </body>
 </html>
