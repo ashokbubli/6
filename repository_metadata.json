@@ -64,4 +64,20 @@
         "contacts": {},
         "servicenow": {}
     }
+     "my-portfolio005": {
+        "application": "i",
+        "contacts": {
+            "it-owner": "owner",
+            "key-expert": [
+                "user1",
+                "user2",
+                "user2",
+            ],
+            "hosted-env": "cloud",
+            "accessibility": "internet"
+        },
+        "servicenow": {
+            "business-service-name": "gh support"
+        }
+    }
 }
