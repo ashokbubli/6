@@ -28,28 +28,4 @@ fetch("repository_metadata.json")
                         out += `<td>${key}</td>`;
                         out += `<td>${item.application || "N/A"}</td>`;
                         out += `<td>${item.contacts ? item.contacts["it-owner"] || "" : ""}</td>`;
-                        out += `<td>${item.contacts ? (item.contacts["key-expert"] ? item.contacts["key-expert"].join(', ') : "") : ""}</td>`;
-                        out += `<td>${item.contacts ? item.contacts["hosted-env"] || "" : ""}</td>`;
-                        out += `<td>${item.contacts ? item.contacts.accessibility || "" : ""}</td>`;
-                        out += `<td>${item.servicenow ? item.servicenow["business-service-name"] || "" : ""}</td>`;
-                        out += "</tr>";
-                    });
-
-                    placeholder.innerHTML = out;
-                    totalRepositoriesElement.innerHTML = `Total number of Repositories = ${filteredMetadata.length}`;
-
-                    lastUpdatedElement.innerHTML = `Last updated: ${lastModified.toLocaleString()}`;
-                }
-
-                applyFilter();
-
-                filterRepositoryInput.addEventListener("input", applyFilter);
-                filterApplicationInput.addEventListener("input", applyFilter);
-
-                window.toggleFilter = function (filterId) {
-                    let filterInput = document.getElementById(filterId);
-                    filterRow.style.display = (filterRow.style.display === "none") ? "table-row" : "none";
-                    filterInput.focus();
-                };
-            });
-    });
+                        out += `<td>${item.contacts ? (item
