@@ -24,7 +24,7 @@ fetch("repository_metadata.json")
                         (metadata[key].application === null || metadata[key].application === undefined || metadata[key].application === '' || metadata[key].application.toLowerCase().includes(filterApplicationValue))
                     );
 
-                    out = "",
+                    out = "";
                     filteredMetadata.forEach(key => {
                         let item = metadata[key];
 
@@ -42,10 +42,8 @@ fetch("repository_metadata.json")
                     placeholder.innerHTML = out;
                     totalRepositoriesElement.innerHTML = `Total number of Repositories = ${filteredMetadata.length}`;
 
-
                     // Display the Last updated Info
-                    lastupdatedElement.innerHTML = `Last updated: ${lastModified.toLocalestring()}`;
-                    
+                    lastUpdatedElement.innerHTML = `Last updated: ${lastModified.toLocaleString()}`;
                 }
 
                 // Initial rendering
