@@ -36,10 +36,18 @@
             justify-content: space-between;
         }
 
-        #info-container > div {
-            flex: 0 0 calc(50% - 10px);
-            text-align: center;
-            margin: 10px 0;
+        #total-repositories, #last-updated {
+            font-weight: bold; /* Make the text bold */
+        }
+
+        #total-repositories {
+            text-align: right; /* Align to the right */
+            margin-top: 20px; /* Adjust top margin as needed */
+        }
+
+        #last-updated {
+            text-align: left; /* Align to the left */
+            margin-top: 20px; /* Adjust top margin as needed */
         }
 
         table {
@@ -51,12 +59,6 @@
             padding: 10px;
             border: thin solid #d4d4d4;
             text-align: center;
-        }
-
-        #total-repositories, #last-updated {
-            text-align: center;
-            margin-top: 20px;
-            font-weight: bold;
         }
 
         /* Add your existing styles here */
@@ -76,8 +78,8 @@
     </div>
 
     <div id="info-container">
-        <div id="last-updated">Last updated:</div>
         <div id="total-repositories">Total number of Repositories =</div>
+        <div id="last-updated">Last updated:</div>
     </div>
 
     <table>
