@@ -16,14 +16,17 @@ fetch("repository_metadata.json")
                     let filterRepositoryValue = filterRepositoryInput.value.toLowerCase();
                     let filterApplicationValue = filterApplicationInput.value.toLowerCase();
 
-                    let filteredMetadata = Object.keys(metadata).filter(key => {
-                        let repositoryMatches = key.toLowerCase().includes(filterRepositoryValue);
-                        let applicationMatches = (
-                            metadata[key].application &&
-                            metadata[key].application.toLowerCase().includes(filterApplicationValue)
-                        );
-                        return repositoryMatches && applicationMatches;
-                    });
+                    let filteredMetadata = Object.keys(metadata).filter(key =>
+                        key.toLowerCase().includes(filterRepositoryValue) &&
+                        (
+                            (metadata[key].application && metadata[key].application.toLowerCase().includes(filterApplicationValue)) ||
+                            (metadata[key].contacts && metadata[key].contacts["it-owner"] && metadata[key].contacts["it-owner"].toLowerCase().includes(filterApplicationValue)) ||
+                            (metadata[key].contacts && metadata[key].contacts["key-expert"] && metadata[key].contacts["key-expert"].join(', ').toLowerCase().includes(filterApplicationValue)) ||
+                            (metadata[key].contacts && metadata[key].contacts["hosted-env"] && metadata[key].contacts["hosted-env"].toLowerCase().includes(filterApplicationValue)) ||
+                            (metadata[key].contacts && metadata[key].contacts.accessibility && metadata[key].contacts.accessibility.toLowerCase().includes(filterApplicationValue)) ||
+                            (metadata[key].servicenow && metadata[key].servicenow["business-service-name"] && metadata[key].servicenow["business-service-name"].toLowerCase().includes(filterApplicationValue))
+                        )
+                    );
 
                     let out = "";
                     filteredMetadata.forEach(key => {
