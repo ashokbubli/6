@@ -44,11 +44,11 @@
                 "user2",
                 "user3"
             ],
-            "hosted-env": "cloud",
+            "hosted-env": "null",
             "accessibility": "internet"
         },
         "servicenow": {
-            "business-service-name": "jet"
+            "business-service-name": "null"
         }
     },
     "my-portfolio004": {
@@ -57,7 +57,7 @@
         "servicenow": ""
     },
     "github": {
-        "application": "Null",
+        "application": "null",
         "contacts": {
             "it-owner": "owner",
             "key-expert": [
