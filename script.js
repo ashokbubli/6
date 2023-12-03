@@ -16,19 +16,11 @@ fetch("repository_metadata.json")
                     let filterRepositoryValue = filterRepositoryInput.value.toLowerCase();
                     let filterApplicationValue = filterApplicationInput.value.toLowerCase();
 
-                    let filteredMetadata = Object.keys(metadata).filter(key => {
-                        let item = metadata[key];
-                        let isBlankOrNull = false;
-
-                        // Check if any cell (including application) is blank or null
-                        Object.values(item).forEach(value => {
-                            if (value === null || value === undefined || value === '') {
-                                isBlankOrNull = true;
-                            }
-                        });
-
-                        return key.toLowerCase().includes(filterRepositoryValue) && isBlankOrNull;
-                    });
+                    let filteredMetadata = Object.keys(metadata).filter(key =>
+                        key.toLowerCase().includes(filterRepositoryValue) &&
+                        ((filterApplicationValue === 'null' && (metadata[key].application === null || metadata[key].application === '')) ||
+                        (filterApplicationValue !== 'null' && (metadata[key].application !== null && metadata[key].application !== undefined && metadata[key].application.toLowerCase().includes(filterApplicationValue))))
+                    );
 
                     let out = "";
                     filteredMetadata.forEach(key => {
