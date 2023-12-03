@@ -33,5 +33,17 @@ table td {
     text-align: center;
     margin-top: 20px; /* Adjust the margin as needed */
 }
+#info-container {
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+table {
+    width: 90%; /* Adjust the width as needed */
+    margin: 20px auto 30px; /* Adjust the margins as needed */
+}
 
 /* ... existing styles ... */
