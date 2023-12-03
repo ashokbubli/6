@@ -18,8 +18,10 @@ fetch("repository_metadata.json")
 
                     let filteredMetadata = Object.keys(metadata).filter(key =>
                         key.toLowerCase().includes(filterRepositoryValue) &&
-                        ((filterApplicationValue === 'null' && (metadata[key].application === null || metadata[key].application === '')) ||
-                        (filterApplicationValue !== 'null' && (metadata[key].application !== null && metadata[key].application !== undefined && metadata[key].application.toLowerCase().includes(filterApplicationValue))))
+                        (
+                            (filterApplicationValue === 'null' && (metadata[key].application === null || metadata[key].application === '' || metadata[key].application.toLowerCase() === 'null')) ||
+                            (filterApplicationValue !== 'null' && (metadata[key].application !== null && metadata[key].application !== undefined && metadata[key].application.toLowerCase().includes(filterApplicationValue)))
+                        )
                     );
 
                     let out = "";
