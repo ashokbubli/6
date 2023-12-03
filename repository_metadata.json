@@ -79,5 +79,10 @@
         "application": "dont",
         "contacts": {},
         "servicenow": {}
+    },
+        "malla modhatiki": {
+        "application": "vachindi",
+        "contacts": {},
+        "servicenow": {}
     }
 }
