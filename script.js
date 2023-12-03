@@ -1,8 +1,6 @@
 fetch("repository_metadata.json")
     .then(function (response) {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+        // Extract the Last modified date and time header from the response 
         const lastModified = new Date(response.headers.get('Last-Modified'));
 
         return response.json()
@@ -20,7 +18,7 @@ fetch("repository_metadata.json")
 
                     let filteredMetadata = Object.keys(metadata).filter(key =>
                         key.toLowerCase().includes(filterRepositoryValue) &&
-                        (metadata[key].application !== undefined && metadata[key].application !== null && metadata[key].application.toLowerCase().includes(filterApplicationValue))
+                        (metadata[key].application === null || metadata[key].application === undefined || metadata[key].application === '' || metadata[key].application.toLowerCase().includes(filterApplicationValue))
                     );
 
                     let out = "";
@@ -29,7 +27,7 @@ fetch("repository_metadata.json")
 
                         out += "<tr>";
                         out += `<td>${key}</td>`;
-                        out += `<td>${item.application || "N/A"}</td>`;
+                        out += `<td>${item.application || ""}</td>`;
                         out += `<td>${item.contacts ? item.contacts["it-owner"] || "" : ""}</td>`;
                         out += `<td>${item.contacts ? (item.contacts["key-expert"] ? item.contacts["key-expert"].join(', ') : "") : ""}</td>`;
                         out += `<td>${item.contacts ? item.contacts["hosted-env"] || "" : ""}</td>`;
@@ -41,20 +39,22 @@ fetch("repository_metadata.json")
                     placeholder.innerHTML = out;
                     totalRepositoriesElement.innerHTML = `Total number of Repositories = ${filteredMetadata.length}`;
 
+                    // Display the Last updated Info
                     lastUpdatedElement.innerHTML = `Last updated: ${lastModified.toLocaleString()}`;
                 }
 
+                // Initial rendering
                 applyFilter();
 
+                // Add event listeners for real-time filtering
                 filterRepositoryInput.addEventListener("input", applyFilter);
                 filterApplicationInput.addEventListener("input", applyFilter);
 
+                // Function to toggle filter row visibility
                 window.toggleFilter = function (filterId) {
                     let filterInput = document.getElementById(filterId);
                     filterRow.style.display = (filterRow.style.display === "none") ? "table-row" : "none";
                     filterInput.focus();
                 };
-            })
-            .catch(error => console.error('Error fetching JSON:', error));
-    })
-    .catch(error => console.error('Fetch error:', error));
+            });
+    });
