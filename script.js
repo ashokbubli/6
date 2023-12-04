@@ -28,14 +28,14 @@ fetch("repository_metadata.json")
                     filteredMetadata.forEach(key => {
                         let item = metadata[key];
 
-                        out += "<tr>";
+                        
                         out += `<td>${item.application !== undefined && item.application !== null ? item.application : ""}</td>`;
                         out += `<td>${item.contacts ? item.contacts["it-owner"] !== undefined && item.contacts["it-owner"] !== null ? item.contacts["it-owner"] : "" : ""}</td>`;
                         out += `<td>${item.contacts ? (item.contacts["key-expert"] ? item.contacts["key-expert"].join(', ') : "") : ""}</td>`;
                         out += `<td>${item.contacts ? item.contacts["hosted-env"] !== undefined && item.contacts["hosted-env"] !== null ? item.contacts["hosted-env"] : "" : ""}</td>`;
                         out += `<td>${item.contacts ? item.contacts.accessibility !== undefined && item.contacts.accessibility !== null ? item.contacts.accessibility : "" : ""}</td>`;
                         out += `<td>${item.servicenow ? item.servicenow["business-service-name"] !== undefined && item.servicenow["business-service-name"] !== null ? item.servicenow["business-service-name"] : "" : ""}</td>`;
-                        out += "</tr>";
+                        
                     });
 
                     placeholder.innerHTML = out;
