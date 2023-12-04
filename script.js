@@ -16,26 +16,28 @@ fetch("repository_metadata.json")
                     let filterRepositoryValue = filterRepositoryInput.value.toLowerCase();
                     let filterApplicationValue = filterApplicationInput.value.toLowerCase();
 
-                    let filteredMetadata = Object.keys(metadata).filter(key =>
-                        key.toLowerCase().includes(filterRepositoryValue) &&
-                        (
-                            (filterApplicationValue === 'null' && (metadata[key].application === null || metadata[key].application === '' || metadata[key].application.toLowerCase() === 'null')) ||
-                            (filterApplicationValue !== 'null' && (metadata[key].application !== null && metadata[key].application !== undefined && metadata[key].application.toLowerCase().includes(filterApplicationValue)))
-                        )
-                    );
+                    let filteredMetadata = Object.keys(metadata).filter(key => {
+                        let item = metadata[key];
+                        let repositoryValue = key.toLowerCase();
+                        let applicationValue = item.application ? item.application.toLowerCase() : "";
+
+                        return repositoryValue.includes(filterRepositoryValue) &&
+                            (!item.application || applicationValue.includes(filterApplicationValue));
+                    });
 
                     let out = "";
                     filteredMetadata.forEach(key => {
                         let item = metadata[key];
 
-                        
-                        out += `<td>${item.application !== undefined && item.application !== null ? item.application : ""}</td>`;
-                        out += `<td>${item.contacts ? item.contacts["it-owner"] !== undefined && item.contacts["it-owner"] !== null ? item.contacts["it-owner"] : "" : ""}</td>`;
+                        out += "<tr>";
+                        out += `<td>${key}</td>`;
+                        out += `<td>${item.application || ""}</td>`;
+                        out += `<td>${item.contacts ? item.contacts["it-owner"] || "" : ""}</td>`;
                         out += `<td>${item.contacts ? (item.contacts["key-expert"] ? item.contacts["key-expert"].join(', ') : "") : ""}</td>`;
-                        out += `<td>${item.contacts ? item.contacts["hosted-env"] !== undefined && item.contacts["hosted-env"] !== null ? item.contacts["hosted-env"] : "" : ""}</td>`;
-                        out += `<td>${item.contacts ? item.contacts.accessibility !== undefined && item.contacts.accessibility !== null ? item.contacts.accessibility : "" : ""}</td>`;
-                        out += `<td>${item.servicenow ? item.servicenow["business-service-name"] !== undefined && item.servicenow["business-service-name"] !== null ? item.servicenow["business-service-name"] : "" : ""}</td>`;
-                        
+                        out += `<td>${item.contacts ? item.contacts["hosted-env"] || "" : ""}</td>`;
+                        out += `<td>${item.contacts ? item.contacts.accessibility || "" : ""}</td>`;
+                        out += `<td>${item.servicenow ? item.servicenow["business-service-name"] || "" : ""}</td>`;
+                        out += "</tr>";
                     });
 
                     placeholder.innerHTML = out;
