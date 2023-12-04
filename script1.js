@@ -1,33 +1,36 @@
-function applyFilter() {
-    let filterRepositoryValue = filterRepositoryInput.value.toLowerCase();
-    let filterApplicationValue = filterApplicationInput.value.toLowerCase();
+document.addEventListener("DOMContentLoaded", function () {
+    // Replace this URL with the correct path to your JSON file
+    const jsonDataUrl = "repository_metadata.json";
 
-    let filteredMetadata = Object.keys(metadata).filter(key =>
-        key.toLowerCase().includes(filterRepositoryValue) &&
-        (
-            (filterApplicationValue === 'null' && (metadata[key].application === null || metadata[key].application === '' || metadata[key].application === 'null')) ||
-            (filterApplicationValue !== 'null' && (metadata[key].application !== null && metadata[key].application !== undefined && metadata[key].application.toLowerCase().includes(filterApplicationValue)))
-        )
-    );
+    // Fetch the JSON data
+    fetch(jsonDataUrl)
+        .then(response => response.json())
+        .then(data => {
+            // Call a function to populate the table with the JSON data
+            populateTable(data);
+        })
+        .catch(error => console.error("Error fetching JSON:", error));
+});
 
-    let out = "";
-    filteredMetadata.forEach(key => {
-        let item = metadata[key];
+function populateTable(data) {
+    const tableBody = document.getElementById("data-output");
 
-        out += "<tr>";
-        out += `<td>${key}</td>`;
-        out += `<td>${item.application || ""}</td>`;
-        out += `<td>${item.contacts ? item.contacts["it-owner"] || "" : ""}</td>`;
-        out += `<td>${item.contacts ? (item.contacts["key-expert"] ? item.contacts["key-expert"].join(', ') : "") : ""}</td>`;
-        out += `<td>${item.contacts ? item.contacts["hosted-env"] || "" : ""}</td>`;
-        out += `<td>${item.contacts ? item.contacts.accessibility || "" : ""}</td>`;
-        out += `<td>${item.servicenow ? item.servicenow["business-service-name"] || "" : ""}</td>`;
-        out += "</tr>";
+    // Clear existing table rows
+    tableBody.innerHTML = "";
+
+    // Iterate through the JSON data and create table rows
+    data.forEach(item => {
+        const row = document.createElement("tr");
+
+        // Modify the keys based on your JSON structure
+        const keys = ["repository", "application", "itOwner", "keyExpert", "hostedEnvironment", "accessibility", "businessServiceName"];
+
+        keys.forEach(key => {
+            const cell = document.createElement("td");
+            cell.textContent = item[key];
+            row.appendChild(cell);
+        });
+
+        tableBody.appendChild(row);
     });
-
-    placeholder.innerHTML = out;
-    totalRepositoriesElement.innerHTML = `Total number of Repositories = ${filteredMetadata.length}`;
-
-    // Display the Last updated Info
-    lastUpdatedElement.innerHTML = `Last updated: ${lastModified.toLocaleString()}`;
 }
