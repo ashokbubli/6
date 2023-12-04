@@ -12,6 +12,9 @@ fetch("repository_metadata.json")
                 let totalRepositoriesElement = document.getElementById("total-repositories");
                 let lastUpdatedElement = document.getElementById("last-updated");
 
+                // Assign a specific value for empty or blank cells
+                const NULL_VALUE = "null";
+
                 function applyFilter() {
                     let filterRepositoryValue = filterRepositoryInput.value.toLowerCase();
                     let filterApplicationValue = filterApplicationInput.value.toLowerCase();
@@ -19,10 +22,10 @@ fetch("repository_metadata.json")
                     let filteredMetadata = Object.keys(metadata).filter(key => {
                         let item = metadata[key];
                         let repositoryValue = key.toLowerCase();
-                        let applicationValue = item.application !== null ? item.application.toLowerCase() : "null";
+                        let applicationValue = item.application !== null ? item.application.toLowerCase() : NULL_VALUE;
 
                         return repositoryValue.includes(filterRepositoryValue) &&
-                            (applicationValue.includes(filterApplicationValue) || filterApplicationValue === "null");
+                            (applicationValue.includes(filterApplicationValue) || filterApplicationValue === NULL_VALUE);
                     });
 
                     let out = "";
