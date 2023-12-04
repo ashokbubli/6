@@ -22,7 +22,7 @@ fetch("repository_metadata.json")
                         let applicationValue = item.application !== null ? item.application.toLowerCase() : "null";
 
                         return repositoryValue.includes(filterRepositoryValue) &&
-                            (applicationValue.includes(filterApplicationValue) || (filterApplicationValue === "null" && item.application === "null"));
+                            (applicationValue.includes(filterApplicationValue) || filterApplicationValue === "null");
                     });
 
                     let out = "";
