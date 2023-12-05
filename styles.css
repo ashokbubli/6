@@ -10,10 +10,8 @@ body {
     color: #555;
 }
 
-/* ... existing styles ... */
-
 table {
-    width: 100%;
+    width: 1000px;
     margin: 30px auto;
 }
 
@@ -26,24 +24,56 @@ table th {
 table td {
     padding: 10px;
     border: thin solid #d4d4d4;
+    width: 18%;
     text-align: center;
+    background-color: #fff;
 }
 
-#total-repositories, #last-updated {
-    text-align: center;
-    margin-top: 20px; /* Adjust the margin as needed */
-}
-#info-container {
-    width: 80%;
-    margin: 20px auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+table img {
+    width: 70%;
 }
 
-table {
-    width: 90%; /* Adjust the width as needed */
-    margin: 20px auto 30px; /* Adjust the margins as needed */
+table td.total-price {
+    font-weight: bold;
+    font-size: 22px;
 }
 
-/* ... existing styles ... */
+table a {
+    text-decoration: none;
+    color: darkred;
+    background-color: #ffecef;
+    padding: 10px 15px;
+}
+
+table a:active {
+    background-color: #ccf4d6;
+    color: green;
+}
+
+table select {
+    padding: 10px;
+    width: 200px;
+    font-size: 16px;
+    border: thin solid #d4d4d4;
+    background-color: transparent;
+}
+
+table select:focus {
+    outline: none;
+}
+
+table img {
+    width: 60%;
+}
+
+#total-repositories {
+    text-align: left;
+    margin-top: 50px; /* Increase top margin to move down three lines */
+    margin-left: 0; /* Change the left margin to align left */
+}
+
+#last-updated {
+    text-align: right;
+    margin-top: 50px; /* Increase top margin to move down three lines */
+    margin-right: 0; /* Change the right margin to align right */
+}
