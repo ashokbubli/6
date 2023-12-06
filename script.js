@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let filteredMetadata = Object.keys(metadata).filter(key => {
                 let item = metadata[key];
                 let repositoryValue = key.toLowerCase();
-                let applicationValue = item.application !== null ? item.application.toLowerCase() : "";
+                let applicationValue = (item.application || "").toLowerCase();
 
                 return repositoryValue.includes(filterRepositoryValue) &&
                     (applicationValue.includes(filterApplicationValue) ||
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 out += "<tr>";
                 out += `<td>${key}</td>`;
-                out += `<td>${item.application !== null ? item.application : ""}</td>`;
+                out += `<td>${item.application || ""}</td>`;
                 out += `<td>${item.contacts ? item.contacts["it-owner"] || "" : ""}</td>`;
                 out += `<td>${item.contacts ? (item.contacts["key-expert"] ? item.contacts["key-expert"].join(', ') : "") : ""}</td>`;
                 out += `<td>${item.contacts ? item.contacts["hosted-env"] || "" : ""}</td>`;
@@ -61,17 +61,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Fetch data and handle errors
     fetch("repository_metadata.json")
-        .then(function (response) {
-            if (!response.ok) {
-                throw new Error(`Network response was not ok: ${response.status} ${response.statusText}`);
-            }
-            return response.json();
-        })
-        .then(function (metadata) {
+        .then(response => response.json())
+        .then(metadata => {
             const lastModified = new Date(response.headers.get('Last-Modified'));
             updateUI(metadata, lastModified);
         })
-        .catch(function (error) {
-            console.error('Error fetching data:', error);
-        });
+        .catch(error => console.error('Error fetching data:', error));
 });
