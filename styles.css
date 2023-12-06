@@ -66,14 +66,4 @@ table img {
     width: 60%;
 }
 
-#total-repositories {
-    text-align: left;
-    margin-top: 50px; /* Increase top margin to move down three lines */
-    margin-left: 0; /* Change the left margin to align left */
-}
 
-#last-updated {
-    text-align: right;
-    margin-top: 50px; /* Increase top margin to move down three lines */
-    margin-right: 0; /* Change the right margin to align right */
-}
